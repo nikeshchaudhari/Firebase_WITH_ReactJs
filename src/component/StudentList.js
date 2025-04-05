@@ -13,10 +13,10 @@ const StudentList = () => {
     });
   }, []);
   return (
-    <div>
-      <h1>Stduent List</h1>
+    <div className="std-list">
+      <h1>Student List</h1>
       {studentData && (
-        <div>
+        <div className="data-list">
           {Object.entries(studentData).map(([key, value]) => {
             return (
               <div key={key}>
@@ -26,8 +26,10 @@ const StudentList = () => {
           })}
         </div>
       )}
+
+   
     </div>
-  );
-};
+  )
+}
 
 export default StudentList;
