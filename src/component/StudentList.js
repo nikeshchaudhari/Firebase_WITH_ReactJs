@@ -17,19 +17,21 @@ const StudentList = () => {
       <h1>Student List</h1>
       {studentData && (
         <div className="data-list">
-          {Object.entries(studentData).map(([key, value]) => {
-            return (
-              <div key={key}>
-                <p>{value.studentName} {value.phone}</p>
-              </div>
-            );
-          })}
+          <table style={{ border: "1px solid black" }}>
+            {Object.entries(studentData).map(([key, value]) => {
+              return (
+                <div key={key}>
+                  <p>
+                    {value.studentName} {value.phone}
+                  </p>
+                </div>
+              );
+            })}
+          </table>
         </div>
       )}
-
-   
     </div>
-  )
-}
+  );
+};
 
 export default StudentList;
