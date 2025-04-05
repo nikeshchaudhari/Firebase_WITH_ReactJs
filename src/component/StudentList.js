@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getDatabase, onValue, ref } from "firebase/database";
+import { getDatabase, onValue, ref , remove} from "firebase/database";
 import { app } from "../Firebase";
 
 const StudentList = () => {
