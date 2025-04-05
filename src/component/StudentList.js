@@ -12,22 +12,32 @@ const StudentList = () => {
       setStudentData(data);
     });
   }, []);
+  const deleteData = (key) => {
+    const db = getDatabase(app);
+    const studentRef = ref(db, "student/" + key);
+    remove(studentRef);
+  };
   return (
     <div className="std-list">
       <h1>Student List</h1>
       {studentData && (
         <div className="data-list">
-          <table style={{ border: "1px solid black" }}>
-            {Object.entries(studentData).map(([key, value]) => {
-              return (
-                <div key={key}>
-                  <p>
-                    {value.studentName} {value.phone}
-                  </p>
-                </div>
-              );
-            })}
-          </table>
+          {Object.entries(studentData).map(([key, value]) => {
+            return (
+              <div key={key}>
+                <p>
+                  {value.studentName} {value.phone}
+                </p>
+                <button
+                  onClick={() => {
+                    deleteData(key);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
