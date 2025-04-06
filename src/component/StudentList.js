@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { getDatabase, onValue, ref , remove} from "firebase/database";
+import { getDatabase, onValue, ref, remove } from "firebase/database";
 import { app } from "../Firebase";
+import { useNavigate } from "react-router-dom";
 
 const StudentList = () => {
   const [studentData, setStudentData] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
     const db = getDatabase(app);
     const studentRef = ref(db, "student");
@@ -35,6 +37,7 @@ const StudentList = () => {
                 >
                   Delete
                 </button>
+                <button onClick={()=>{navigate('/updatestudent',{state:123})}}>Update</button>
               </div>
             );
           })}
