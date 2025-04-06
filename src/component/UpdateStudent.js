@@ -9,7 +9,8 @@ const UpdateStudent = () => {
   const [addmission, setaddmission] = useState();
   const navigate = useNavigate();
 
-  const submitHandler = () => {
+  const submitHandler = (event) => {
+    event.preventDefault();
     const db = getDatabase(app);
     set(ref(db, "student/" + addmission), {
       studentName: name,
