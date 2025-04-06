@@ -11,6 +11,7 @@ const Dashboard = () => {
        <Link to = '/studentlist'style={{
         color:'white', display:'block',padding:'12px'
        }}> Student List</Link>
+      
       </div>
       <div> 
        <Outlet/>
