@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import "../style.css";
 import { getDatabase, ref, set } from "firebase/database";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {app} from "../Firebase"
 const UpdateStudent = () => {
   const [name, setname] = useState();
   const [phone, setphone] = useState();
   const [addmission, setaddmission] = useState();
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
+  
+  
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -57,7 +61,7 @@ const UpdateStudent = () => {
         />
         <br></br>
         <br></br>
-        <button type="submit">Submit</button>
+        <button type="submit">Update Data</button>
       </form>
     </div>
   );
