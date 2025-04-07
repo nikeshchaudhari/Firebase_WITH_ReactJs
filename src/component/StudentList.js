@@ -37,7 +37,7 @@ const StudentList = () => {
                 >
                   Delete
                 </button>
-                <button onClick={()=>{navigate('/updatestudent',{state:123})}}>Update</button>
+                <button onClick={()=>{navigate('/updatestudent',{state:[key,value]})}}>Update</button>
               </div>
             );
           })}
