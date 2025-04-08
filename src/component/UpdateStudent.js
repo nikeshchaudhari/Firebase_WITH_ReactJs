@@ -4,13 +4,15 @@ import { getDatabase, ref, set } from "firebase/database";
 import { useLocation, useNavigate } from "react-router-dom";
 import {app} from "../Firebase"
 const UpdateStudent = () => {
-  const [name, setname] = useState();
-  const [phone, setphone] = useState();
-  const [addmission, setaddmission] = useState();
+
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
   
+  const [name, setname] = useState(location.state[1].studentName);
+  const [phone, setphone] = useState(location.state[1].phone);
+  const [addmission, setaddmission] = useState(location.state[0]);
+
   
 
   const submitHandler = (event) => {
@@ -33,7 +35,7 @@ const UpdateStudent = () => {
       <form onSubmit={submitHandler}>
         <label>Admission No. : </label>
         <input
-          onChange={(e) => {
+          disabled value={addmission}onChange={(e) => {
             setaddmission(e.target.value);
           }}
           type="text"
@@ -43,7 +45,7 @@ const UpdateStudent = () => {
         <br></br>
         <label>Name : </label>
         <input
-          onChange={(e) => {
+         value={name} onChange={(e) => {
             setname(e.target.value);
           }}
           type="text"
@@ -53,7 +55,7 @@ const UpdateStudent = () => {
         <br></br>
         <label>Phone Number : </label>
         <input
-          onChange={(e) => {
+          value={phone}onChange={(e) => {
             setphone(e.target.value);
           }}
           type="number"
@@ -61,7 +63,9 @@ const UpdateStudent = () => {
         />
         <br></br>
         <br></br>
-        <button type="submit">Update Data</button>
+        <button  onClick={()=>{
+          navigate('/studentlist')
+        }}type="submit">Update Data</button>
       </form>
     </div>
   );
