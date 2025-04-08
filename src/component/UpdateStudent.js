@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style.css";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set, update } from "firebase/database";
 import { useLocation, useNavigate } from "react-router-dom";
 import {app} from "../Firebase"
 const UpdateStudent = () => {
@@ -18,16 +18,18 @@ const UpdateStudent = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     const db = getDatabase(app);
-    set(ref(db, "student/" + addmission), {
-      studentName: name,
-      phone: phone,
-    })
-      .then((res) => {
-        navigate("/updatestudent");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+   const studentRef = ref(db,'student/'+location.state[0]);
+   update(studentRef,{
+    studentName:name,
+    phone:phone
+   })
+   .then(res=>{
+    navigate('/studentlist')
+   })
+   .catch(err=>{
+    console.log(err);
+    
+   })
   };
 
   return (
